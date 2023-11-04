@@ -1,10 +1,10 @@
+#define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <stdbool.h>
 
 #include "main.h"
 #include "triangleSolver.h"
-
-int side = 0;
 
 int main() {
 	bool continueProgram = true;
@@ -28,6 +28,7 @@ int main() {
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
+			scanf("%*[^\n]");
 			break;
 		}
 	}
@@ -49,7 +50,7 @@ int printShapeMenu() {
 	int shapeChoice;
 
 	printf_s("Enter number: ");
-	scanf_s("%1o", &shapeChoice);
+	scanf("%d", &shapeChoice);
 
 	return shapeChoice;
 }
@@ -58,7 +59,11 @@ int* getTriangleSides(int* triangleSides) {
 	printf_s("Enter the three sides of the triangle: ");
 	for (int i = 0; i < 3; i++)
 	{
-		scanf_s("%d", &triangleSides[i]);
+		while (scanf("%d", &triangleSides[i]) != 1)
+		{
+			printf("invalid input, please Enter the three sides of the triangle: ");
+			scanf("%*[^\n]");
+		}
 	}
 	return triangleSides;
 }
