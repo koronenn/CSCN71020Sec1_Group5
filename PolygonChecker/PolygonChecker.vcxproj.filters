@@ -27,6 +27,9 @@
     <ClCompile Include="rectangleChecker.c">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="solveAngles.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="triangleSolver.h">
@@ -39,6 +42,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="rectangleSolver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="solveAngles.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
