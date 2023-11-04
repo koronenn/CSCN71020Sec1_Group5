@@ -30,8 +30,12 @@ void solveAngles(double* side1, double* side2, double* side3) {
     // convert to degrees
     angle3 = (angle3 * 180) / PI;
 
-
-    *side1 = angle1;
-    *side2 = angle2;
-    *side3 = angle3;
+	if (isTriangle(angle1, angle2, angle3)) {
+		printf("Angle 1 %.2lf", angle1);
+		printf("Angle 2 %.2lf", angle2);
+		printf("Angle 3 %.2lf", angle3);
+	}
+	else {
+		printf("The side lengths do not create a triangle");
+	}
 }
