@@ -8,4 +8,4 @@
 * int: second side length
 * int: third side length
 */
-void solveAngles(int, int, int);
+void solveAngles(double*, double*, double*);
