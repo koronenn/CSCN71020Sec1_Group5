@@ -43,41 +43,45 @@ void ClassifyPoints(int* rectangleIndexes)
 	{
 		for (int y = 1; y < 8; y += 2)
 		{
-			//determine point 1 (top most always, leftmost if 2 points or more at same max Y)
-			if (rectangleIndexes[1] < rectangleIndexes[(y + 2) % 8])
+			//check point 1: highest, leftmost
+			if (rectangleIndexes[1] <= rectangleIndexes[y])
 			{
-				if (rectangleIndexes[0] >= rectangleIndexes[(y + 1) % 8])
+				if (rectangleIndexes[0] > rectangleIndexes[y-1])
 				{
-					//swap point X with first index
-					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[(y + 1) % 8], &rectangleIndexes[(y + 2) % 8]);
-					printf("Found");
+					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y-1], &rectangleIndexes[y]);
 				}
 			}
 
-			//determine point 2(rightmost always, uppermost if 2 or more points at same X)
-			if (rectangleIndexes[x] <= rectangleIndexes[(x + 2) % 8])
+			//check point 2: rightmost, highest
+			if (rectangleIndexes[2] <= rectangleIndexes[x])
 			{
-				if (rectangleIndexes[(x + 1) % 8] < rectangleIndexes[(x + 3) % 8])
+				if (rectangleIndexes[3] > rectangleIndexes[x + 1])
 				{
-					swap(&rectangleIndexes[x], &rectangleIndexes[x+1], &rectangleIndexes[(x + 2) % 8], &rectangleIndexes[(x + 3) % 8]);
+					//swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[x], &rectangleIndexes[x+1]);
+
+					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
 				}
 			}
 
-			//point 3: lowest, rightmost
-			if (rectangleIndexes[y] > rectangleIndexes[(y + 2) % 8])
+			//check point 3: lowest, rightmost
+			if (rectangleIndexes[5] >= rectangleIndexes[y])
 			{
-				if (rectangleIndexes[(y - 1) % 8] <= rectangleIndexes[(y - 3) % 8])
+				if (rectangleIndexes[4] < rectangleIndexes[y - 1])
 				{
-					swap(&rectangleIndexes[x], &rectangleIndexes[x + 1], &rectangleIndexes[(x + 2) % 8], &rectangleIndexes[(x + 3) % 8]);
+					//swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
+
+					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
 				}
 			}
 
-			//point 4: left, lowest
-			if (rectangleIndexes[x] <= rectangleIndexes[(x + 2) % 8])
+			//check point 4: leftmost, lowest
+			if (rectangleIndexes[6] >= rectangleIndexes[y])
 			{
-				if (rectangleIndexes[(x + 1) % 8] < rectangleIndexes[(x + 3) % 8])
+				if (rectangleIndexes[7] > rectangleIndexes[y - 1])
 				{
-					swap(&rectangleIndexes[x], &rectangleIndexes[x + 1], &rectangleIndexes[(x + 2) % 8], &rectangleIndexes[(x + 3) % 8]);
+					//swap(&rectangleIndexes[6], &rectangleIndexes[7], &rectangleIndexes[x], &rectangleIndexes[x+1]);
+
+					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
 				}
 			}
 		}
