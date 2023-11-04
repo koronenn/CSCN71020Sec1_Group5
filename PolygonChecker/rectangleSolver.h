@@ -1,3 +1,3 @@
 #pragma once
 
-int* GetUserInput();
+int* GetRectangleIndexes(int*);

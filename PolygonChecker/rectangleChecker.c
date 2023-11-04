@@ -1,13 +1,11 @@
-#define _CRT_SECRURE_NO_WARNINGS
+#define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 #include <stdlib.h>
 
 #include "rectangleSolver.h"
 
-int* GetUserInput()
+int* GetRectangleIndexes(int* rectangleIndexes)
 {
-	int values[8] = { 0 };
-
 	for (int i = 0; i < 8; i++)
 	{
 		int parsed;
@@ -19,16 +17,13 @@ int* GetUserInput()
 				printf("Enter Y value %d: ", (i / 2 + 1));
 
 			//determine if input is int, otherwise clear the input buffer
-			parsed = scanf_s("%d", &values[i]);
+			parsed = scanf_s("%d", &rectangleIndexes[i]);
 			if (parsed != 1)
 			{
-				fflush(stdin);
+				printf("Not valid input, try again.\n");
+				scanf("%*[^\n]");
 			}
 		} while (parsed != 1);
 	}
-	for (int i = 0; i < 8; i++)
-	{
-		printf("%d\n", values[i]);
-	}
-	return values;
+	return rectangleIndexes;
 }
