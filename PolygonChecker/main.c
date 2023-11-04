@@ -22,6 +22,9 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+
+			// deallocate result
+			free(result);
 			break;
 		case 2:
 			printf("Rectangle Selected.\n");
