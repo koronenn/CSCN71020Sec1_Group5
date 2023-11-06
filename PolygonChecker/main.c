@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #include "main.h"
 #include "triangleSolver.h"
@@ -23,6 +24,7 @@ int main() {
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
+			free(result);
 			break;
 		case 2:
 			printf("Rectangle Selected.\n");

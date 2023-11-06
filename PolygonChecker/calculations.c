@@ -1,4 +1,3 @@
-
 #include "calculations.h"
 
 // returns largest of passed in variables
@@ -34,8 +33,8 @@ bool pythagTheorem(int side1, int side2, int side3) {
 	else
 		pythag = sqrt((side1 * side1) + (side2 * side2));
 
-
 	// return true/false based on whether the hypotenuse is equal to Pythagoras theorem  calculation
+	
 	if (hyp == pythag)
 		return true;
 	else

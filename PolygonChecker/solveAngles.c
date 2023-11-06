@@ -1,14 +1,15 @@
 #include <math.h>
 #include <stdio.h>
+#include "triangleSolver.h"
 
 #define PI 3.14159265358979323846
 
-void solveAngles(int side1, int side2, int side3) {
+void solveAngles(double* side1, double* side2, double* side3) {
 
 	// these variables are turned into doubles so that the cosine law calculates correctly 
-	double a = (double)side1;
-	double b = (double)side2;
-	double c = (double)side3;
+	double a = *side1;
+	double b = *side2;
+	double c = *side3;
 
 	//// Solving formula for cosine law to get angle c
 	// c^2 = a^2 + b^2 - 2ab cos(c)
@@ -29,12 +30,7 @@ void solveAngles(int side1, int side2, int side3) {
 	// convert to degrees
 	angle3 = (angle3 * 180) / PI;
 
-	if (isTriangle(angle1, angle2, angle3)) {
-		printf("Angle 1 %.2lf", angle1);
-		printf("Angle 2 %.2lf", angle2);
-		printf("Angle 3 %.2lf", angle3);
-	}
-	else {
-		printf("The side lengths do not create a triangle");
-	}
+	*side1 = angle1;
+	*side2 = angle2;
+	*side3 = angle3;
 }
