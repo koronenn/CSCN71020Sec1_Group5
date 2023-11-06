@@ -21,22 +21,21 @@ int main() {
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
-			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-			free(result);
 			break;
 		case 2:
 			printf("Rectangle Selected.\n");
 			int rectangleVertexes[8] = { 0 };
 			int* rectangleVertexesPtr = GetRectangleIndexes(rectangleVertexes);
+			ClassifyPoints(rectangleVertexesPtr);
 			break;
 		case 0:
 			continueProgram = false;
 			break;
 		default:
 			printf_s("Invalid value entered.\n");
-			scanf("%*[^\n]");
+			scanf_s("%*[^\n]");
 			break;
 		}
 	}
@@ -59,7 +58,7 @@ int printShapeMenu() {
 	int shapeChoice;
 
 	printf_s("Enter number: ");
-	scanf("%d", &shapeChoice);
+	scanf_s("%d", &shapeChoice);
 
 	return shapeChoice;
 }
@@ -71,7 +70,7 @@ int* getTriangleSides(int* triangleSides) {
 		while (scanf("%d", &triangleSides[i]) != 1)
 		{
 			printf("invalid input, please Enter the three sides of the triangle: ");
-			scanf("%*[^\n]");
+			scanf_s("%*[^\n]");
 		}
 	}
 	return triangleSides;
