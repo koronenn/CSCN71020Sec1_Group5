@@ -46,7 +46,7 @@ void ClassifyPoints(int* rectangleIndexes)
 			//check point 1: highest, leftmost
 			if (rectangleIndexes[1] <= rectangleIndexes[y])
 			{
-				if (rectangleIndexes[0] > rectangleIndexes[y-1])
+				if (rectangleIndexes[0] >= rectangleIndexes[y-1])
 				{
 					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y-1], &rectangleIndexes[y]);
 				}
@@ -55,33 +55,27 @@ void ClassifyPoints(int* rectangleIndexes)
 			//check point 2: rightmost, highest
 			if (rectangleIndexes[2] <= rectangleIndexes[x])
 			{
-				if (rectangleIndexes[3] > rectangleIndexes[x + 1])
+				if (rectangleIndexes[3] >= rectangleIndexes[x + 1])
 				{
-					//swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[x], &rectangleIndexes[x+1]);
-
-					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
+					swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[x], &rectangleIndexes[x + 1]);
 				}
 			}
 
 			//check point 3: lowest, rightmost
 			if (rectangleIndexes[5] >= rectangleIndexes[y])
 			{
-				if (rectangleIndexes[4] < rectangleIndexes[y - 1])
+				if (rectangleIndexes[4] <= rectangleIndexes[y - 1])
 				{
-					//swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
-
-					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
+					swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
 				}
 			}
 
 			//check point 4: leftmost, lowest
-			if (rectangleIndexes[6] >= rectangleIndexes[y])
+			if (rectangleIndexes[6] >= rectangleIndexes[x])
 			{
-				if (rectangleIndexes[7] > rectangleIndexes[y - 1])
+				if (rectangleIndexes[7] >= rectangleIndexes[x + 1])
 				{
-					//swap(&rectangleIndexes[6], &rectangleIndexes[7], &rectangleIndexes[x], &rectangleIndexes[x+1]);
-
-					swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
+					swap(&rectangleIndexes[6], &rectangleIndexes[7], &rectangleIndexes[x], &rectangleIndexes[x + 1]);
 				}
 			}
 		}
