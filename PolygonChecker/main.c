@@ -8,7 +8,7 @@
 #include "triangleSolver.h"
 #include "rectangleSolver.h"
 
-int main() {
+int main(void) {
 	bool continueProgram = true;
 	while (continueProgram) {
 		printWelcome();
@@ -23,8 +23,6 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			char* result = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
 			printf_s("%s\n", result);
-
-			// deallocate result
 			free(result);
 			break;
 		case 2:

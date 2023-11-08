@@ -1,4 +1,5 @@
 #define _CRT_SECURE_NO_WARNINGS
+
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
@@ -8,74 +9,92 @@
 #include "calculations.h"
 #include "solveAngles.h"
 
+#define MAXSTRING 100
+#define MAXRESULT 300
+
 char* analyzeTriangle(int side1, int side2, int side3) {
 
-    double angleA = (double)side1;
-    double angleB = (double)side2;
-    double angleC = (double)side3;
+	// all three angles of triangle 
+	double angleA = (double)side1;
+	double angleB = (double)side2;
+	double angleC = (double)side3;
 
-    solveAngles(&angleA, &angleB, &angleC);
+	// turn angles from side lengths into actual angles 
+	solveAngles(&angleA, &angleB, &angleC);
 
-    char result[100] = "";
+	// strings for displaying angles and type of triangle
+	char result[MAXRESULT] = "";
+	char angles[MAXSTRING] = "";
+	char anglesactual[MAXSTRING] = "";
 
-    char angles[100];
-    char anglesactual[100] = "";
+	// add all three angles to the angles actual string
+	sprintf(angles, "%lg ", angleA);
+	strcat(anglesactual, angles);
+	sprintf(angles, "%lg ", angleB);
+	strcat(anglesactual, angles);
+	sprintf(angles, "%lg ", angleC);
+	strcat(anglesactual, angles);
 
-    sprintf(angles, "%lf ", angleA);
-    strcat(anglesactual, angles);
-    sprintf(angles, "%lf ", angleB);
-    strcat(anglesactual, angles);
-    sprintf(angles, "%lf ", angleC);
-    strcat(anglesactual, angles);
+	
+	// The following if structure determines the type of triangle and sets the value of result to the triangle type
+	// with the three different angles, unless the shape is not a triangle
 
-    //printf(anglesactual);
+	// if all the angles do not add up to 180 then the shape is not a triangle, or if any angle is 0
+	if (isTriangle(angleA, angleB, angleC) != true) {
+		strcpy(result,"Not a triangle");
+	}
 
-    if (isTriangle(angleA, angleB, angleC) != true) {
-        strncpy(result,"Not a triangle", 100);
-    }
-    else if (side1 == side2 && side1 == side3) {
-        strncpy(result, "Equilateral triangle with sides: ", 100);
-        strcat(result, anglesactual);
-    }
-    else if (pythagTheorem(side1, side2, side3)) {
-        strncpy(result, "Right angle triangle with sides: ", 100);
-        strcat(result, anglesactual);
-    }
-    else if ((side1 == side2 && side1 != side3) || (side1 == side3 && side1 != side2)) {
-        strncpy(result, "Isocelese triangle with sides: ", 100);
-        strcat(result, anglesactual);
-    }
-    else {
-        strncpy(result, "Scalene triangle with sides: ", 100);
-        strcat(result, anglesactual);
-    }
+	// if all three sides are the same then the triangle is equilateral 
+	else if (side1 == side2 && side1 == side3) {
+		strcpy(result,"Equilateral triangle with angles ");
+		strcat(result, anglesactual);
+	}
 
+	// if the triangle has a 90 degree angle then it is a right angle triangle
+	else if (pythagTheorem(side1, side2, side3)) {
+		
+		strcpy(result, "Right triangle with angles ");
+		strcat(result, anglesactual);
+	}
 
-    // for debugging
-    // printf("%s\n",result);
+	// if 2 angles are the same and the other is different, the the triangle is isosceles
+	else if ((angleA == angleB && angleA != angleC) || (angleC == angleB && angleC != angleA) || (angleA == angleC && angleA != angleB)) {
+		strcpy(result, "Isosceles triangle with angles ");
+		strcat(result, anglesactual);
+	}
 
-    // I think the problem here is result get destroyed after the function ends which is why there is an access writing violation if
-    // you try to return he pointer to the array, because result no longer exists, so i think we have to use malloc in order
-    // to return the result
-    return strncpy((char*)malloc(100 * sizeof(char)),result,100);
+	// in all other cases, the triangle is scalene
+	else {
+		strcpy(result, "Scalene triangle with angles ");
+		strcat(result, anglesactual);
+	}
+
+	// create a malloc with the value of result so that it can be returned properly 
+	char* finalResult = (char*)malloc(strlen(result) + 1);
+	strcpy(finalResult, result);
+
+	return finalResult;
 }
 
 bool isTriangle(double angleA, double angleB, double angleC)
 {
-    int sumOfAngles = angleA + angleB + angleC;
 
-    //printf("%")
-    //printf("%d", sumOfAngles);
-    if (angleA == 0 || angleB == 0 || angleC == 0)
-    {
-        return false;
-    }
-    if (sumOfAngles != 180)
-    {
-        return false;
-    }
-    else
-    {
-        return true;
-    }
+	// return false if any angle is 0, (triangle has 1 or more side lengths that are too long to form a triangle)
+	if (angleA == 0 || angleB == 0 || angleC == 0)
+	{
+		return false;
+	}
+
+	// calulate te sum of the three angles
+	int sumOfAngles = angleA + angleB + angleC;
+
+	// return true if sum of angles is 180 which indicates the shape is a triangle, other wise the shape is not and return false
+	if(sumOfAngles != 180)
+	{
+		return false;
+	}
+	else
+	{
+		return true;
+	}
 }
