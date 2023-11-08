@@ -2,6 +2,7 @@
 
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
 
 #include "main.h"
 #include "triangleSolver.h"
@@ -31,6 +32,19 @@ int main() {
 			int rectangleVertexes[8] = { 0 };
 			int* rectangleVertexesPtr = GetRectangleIndexes(rectangleVertexes);
 			ClassifyPoints(rectangleVertexesPtr);
+			double* rectangleSidesPtr[4] = {0};
+			bool isRect;
+			if (isRect = CalculateAnglesForPolygon(rectangleVertexesPtr, rectangleSidesPtr))
+			{
+				double perimeter = GetPerimeter(rectangleSidesPtr);
+				double area = GetArea(rectangleSidesPtr);
+				PrintRectangle(isRect, perimeter, area);
+			}
+			else
+			{
+				double perimeter = GetPerimeter(rectangleSidesPtr);
+				PrintRectangle(isRect, perimeter, 0.0);
+			}
 			break;
 		case 0:
 			continueProgram = false;

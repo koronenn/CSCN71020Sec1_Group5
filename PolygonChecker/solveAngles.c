@@ -1,5 +1,6 @@
 #include <math.h>
 #include <stdio.h>
+#include "solveAngles.h"
 #include "triangleSolver.h"
 
 #define PI 3.14159265358979323846
