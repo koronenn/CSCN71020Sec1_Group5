@@ -41,7 +41,7 @@ int main(void) {
 			else
 			{
 				double perimeter = GetPerimeter(rectangleSidesPtr);
-				PrintRectangle(isRect, perimeter, 0.0);
+				PrintRectangle(isRect, perimeter, 0.00);
 			}
 			break;
 		case 0:
