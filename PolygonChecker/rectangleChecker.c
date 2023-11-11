@@ -41,12 +41,13 @@ void ClassifyPoints(int* rectangleIndexes)
 	// odd numbers signify Y values in rectangle indexes
 	for (int x = 0; x < 8; x += 2)
 	{
+		//0 -1 0 1 1 0 -1 0
 		for (int y = 1; y < 8; y += 2)
 		{
 			//check point 1: highest, leftmost
 			if (rectangleIndexes[1] <= rectangleIndexes[y] && rectangleIndexes[0] >= rectangleIndexes[y - 1])
 			{
-				swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y-1], &rectangleIndexes[y]);
+				swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
 			}
 
 			//check point 2: rightmost, highest
@@ -68,6 +69,9 @@ void ClassifyPoints(int* rectangleIndexes)
 			}
 		}
 	}
+
+	if (rectangleIndexes[2] <= rectangleIndexes[4] && rectangleIndexes[5] >= rectangleIndexes[3])
+		swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[4], &rectangleIndexes[5]);
 }
 
 void swap(int* x1, int* y1, int* x2, int* y2)
@@ -87,8 +91,8 @@ bool CalculateAnglesForPolygon(int* rectangleVertexes, double* rectangleSides)
 	bool isRectangle = true;
 	for (int i = 0; i < 8; i += 2)
 	{
-		int adjacent = rectangleVertexes[(i + 2) % 8] - rectangleVertexes[  i  ];	//adjacent is x values
-		int opposite = rectangleVertexes[(i + 3) % 8] - rectangleVertexes[i + 1];	//opposite is y values
+		double adjacent = rectangleVertexes[(i + 2) % 8] - rectangleVertexes[  i  ];	//adjacent is x values
+		double opposite = rectangleVertexes[(i + 3) % 8] - rectangleVertexes[i + 1];	//opposite is y values
 
 		//calculate side length using hypotenuse calculation
 		double sidelength = sqrt(pow(adjacent, 2) + pow(opposite, 2));
@@ -96,8 +100,8 @@ bool CalculateAnglesForPolygon(int* rectangleVertexes, double* rectangleSides)
 	}
 
 	//diagonals for cosine law calculation
-	double diag1 = sqrt(pow(rectangleSides[0], 2) + pow(rectangleSides[1], 2));
-	double diag2 = sqrt(pow(rectangleSides[2], 2) + pow(rectangleSides[1], 2));
+	double diag1 = sqrt(pow(rectangleVertexes[4] - rectangleVertexes[0], 2) + pow(rectangleVertexes[5] - rectangleVertexes[1], 2));
+	double diag2 = sqrt(pow(rectangleVertexes[2] - rectangleVertexes[6], 2) + pow(rectangleVertexes[3] - rectangleVertexes[7], 2));
 
 	//set sides to easier to use variables
 	double a = rectangleSides[0];
@@ -106,34 +110,16 @@ bool CalculateAnglesForPolygon(int* rectangleVertexes, double* rectangleSides)
 	double d = rectangleSides[3];
 
 	//cosine law calculations to determine outside angles are 90
-	double angle1 = acos(((a * a) + (b * b) - (diag1 * diag1)) / (2 * a * b));
-	double angle2 = acos(((b * b) + (c * c) - (diag2 * diag2)) / (2 * b * c));
-	double angle3 = acos(((c * c) + (d * d) - (diag1 * diag1)) / (2 * c * d));
-	double angle4 = acos(((d * d) + (a * a) - (diag2 * diag2)) / (2 * d * a));
+	float angle1 = acos(((a * a) + (b * b) - (diag1 * diag1)) / (2 * a * b));
+	float angle2 = acos(((b * b) + (c * c) - (diag2 * diag2)) / (2 * b * c));
+	float angle3 = acos(((c * c) + (d * d) - (diag1 * diag1)) / (2 * c * d));
+	float angle4 = acos(((d * d) + (a * a) - (diag2 * diag2)) / (2 * d * a));
 
-	//convert to degrees and deal with floating point arithmetic errors
+	//convert to degrees
 	angle1 *= 180 / PI;
 	angle2 *= 180 / PI;
 	angle3 *= 180 / PI;
 	angle4 *= 180 / PI;
-
-	//round to 6 decimals
-	angle1 *= 1000000;
-	angle2 *= 1000000;
-	angle3 *= 1000000;
-	angle4 *= 1000000;
-
-	//convert to int to truncate
-	angle1 = (int)angle1;
-	angle2 = (int)angle2;
-	angle3 = (int)angle3;
-	angle4 = (int)angle4;
-
-	//convert back to double
-	angle1 /= 1000000;
-	angle2 /= 1000000;
-	angle3 /= 1000000;
-	angle4 /= 1000000;
 
 	if (angle1 == 90 && angle2 == 90 && angle3 == 90 && angle4 == 90)
 		return true;
