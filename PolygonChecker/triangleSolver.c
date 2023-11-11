@@ -46,26 +46,26 @@ char* analyzeTriangle(int side1, int side2, int side3) {
 
 	// if all three sides are the same then the triangle is equilateral 
 	else if (side1 == side2 && side1 == side3) {
-		strcpy(result,"Equilateral triangle with angles ");
+		strcpy(result,"Equilateral triangle with angles: ");
 		strcat(result, anglesactual);
 	}
 
 	// if the triangle has a 90 degree angle then it is a right angle triangle
 	else if (pythagTheorem(side1, side2, side3)) {
 		
-		strcpy(result, "Right triangle with angles ");
+		strcpy(result, "Right triangle with angles: ");
 		strcat(result, anglesactual);
 	}
 
 	// if 2 angles are the same and the other is different, the the triangle is isosceles
 	else if ((angleA == angleB && angleA != angleC) || (angleC == angleB && angleC != angleA) || (angleA == angleC && angleA != angleB)) {
-		strcpy(result, "Isosceles triangle with angles ");
+		strcpy(result, "Isosceles triangle with angles: ");
 		strcat(result, anglesactual);
 	}
 
 	// in all other cases, the triangle is scalene
 	else {
-		strcpy(result, "Scalene triangle with angles ");
+		strcpy(result, "Scalene triangle with angles: ");
 		strcat(result, anglesactual);
 	}
 
