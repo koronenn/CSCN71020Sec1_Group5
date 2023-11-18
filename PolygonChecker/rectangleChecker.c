@@ -146,7 +146,7 @@ double GetArea(double* sides)
 
 void PrintRectangle(bool isRect, double perimeter, double area)
 {
-	if(isRect)
+	if (isRect)
 		printf("These points make a rectangle with a perimeter of %lf and an area of %lf.\n", perimeter, area);
 	else
 		printf("These points do not make a rectangle. It has a perimeter of %lf.\n", perimeter);
