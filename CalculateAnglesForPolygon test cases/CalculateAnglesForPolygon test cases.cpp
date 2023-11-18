@@ -214,11 +214,47 @@ namespace CalculateAnglesForPolygontestcases
 
 		TEST_METHOD(TestingForSidewaysRectangle4)
 		{
-			//test case testing for a sideways rectangle in the negative x-axis
+			//test case testing for a sideways rectangle in the negative x and y axis
 			int rectangleVertices[] = { -1,-5,-4,-5,-4,0,-1,0 };
 			double rectangleSidesPTR[4];
 
 			Assert::IsTrue(CalculateAnglesForPolygon(rectangleVertices, rectangleSidesPTR));
+		}
+
+		TEST_METHOD(TestingForStraightLine1)
+		{
+			//test case testing for a straight line in the positive x and y axis
+			int rectangleVertices[] = { 1,2,3,2,5,2,9,2 };
+			double rectangleSidesPTR[4];
+
+			Assert::IsFalse(CalculateAnglesForPolygon(rectangleVertices, rectangleSidesPTR));
+		}
+
+		TEST_METHOD(TestingForStraightLine2)
+		{
+			//test case testing for a sideways rectangle in the negative x-axis
+			int rectangleVertices[] = { -1,2,-3,2,-5,2,-9,2 };
+			double rectangleSidesPTR[4];
+
+			Assert::IsFalse(CalculateAnglesForPolygon(rectangleVertices, rectangleSidesPTR));
+		}
+
+		TEST_METHOD(TestingForStraightLine3)
+		{
+			//test case testing for a sideways rectangle in the negative x and y axis
+			int rectangleVertices[] = { -1,-2,-3,-2,-5,-2,-9,-2 };
+			double rectangleSidesPTR[4];
+
+			Assert::IsFalse(CalculateAnglesForPolygon(rectangleVertices, rectangleSidesPTR));
+		}
+
+		TEST_METHOD(TestingForStraightLine4)
+		{
+			//test case testing for a sideways rectangle in the negative y axis
+			int rectangleVertices[] = { 1,-2,3,-2,5,-2,9,-2 };
+			double rectangleSidesPTR[4];
+
+			Assert::IsFalse(CalculateAnglesForPolygon(rectangleVertices, rectangleSidesPTR));
 		}
 	};
 }
