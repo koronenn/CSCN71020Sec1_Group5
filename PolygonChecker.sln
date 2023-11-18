@@ -15,8 +15,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "solveAnglesTest", "solveAng
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "analyzeTriangleTest", "analyzeTriangleTest\analyzeTriangleTest.vcxproj", "{6BFEC5FA-3835-4DDB-AB89-B29D0AE877FF}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getLargestTest", "getLargestTest\getLargestTest.vcxproj", "{C6A993B1-B980-4BD5-9C10-267025C6ECB8}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassifyPoints TestCases", "ClassifyPoints TestCases\ClassifyPoints TestCases.vcxproj", "{6B407E31-4223-47F0-985F-C15883FB867F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetPerimeter TestCases", "GetPerimeter TestCases\GetPerimeter TestCases.vcxproj", "{A21DDA24-5A08-475D-A501-730E1EE8DB06}"
@@ -24,6 +22,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "isTriangle TestCases", "isTriangle TestCases\isTriangle TestCases.vcxproj", "{FE9FCA47-A76E-4F94-A771-21FCE76E721F}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pythagTheorem TestCases", "pythagTheorem TestCases\pythagTheorem TestCases.vcxproj", "{64BCA3F8-E8BA-4E56-BC13-DB70DFA83283}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "getLargestTest", "getLargestTest\getLargestTest.vcxproj", "{C6A993B1-B980-4BD5-9C10-267025C6ECB8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "distTest", "distTest\distTest.vcxproj", "{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -81,14 +83,6 @@ Global
 		{6BFEC5FA-3835-4DDB-AB89-B29D0AE877FF}.Release|x64.Build.0 = Release|x64
 		{6BFEC5FA-3835-4DDB-AB89-B29D0AE877FF}.Release|x86.ActiveCfg = Release|Win32
 		{6BFEC5FA-3835-4DDB-AB89-B29D0AE877FF}.Release|x86.Build.0 = Release|Win32
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x64.ActiveCfg = Debug|x64
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x64.Build.0 = Debug|x64
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x86.ActiveCfg = Debug|Win32
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x86.Build.0 = Debug|Win32
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x64.ActiveCfg = Release|x64
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x64.Build.0 = Release|x64
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x86.ActiveCfg = Release|Win32
-		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x86.Build.0 = Release|Win32
 		{6B407E31-4223-47F0-985F-C15883FB867F}.Debug|x64.ActiveCfg = Debug|x64
 		{6B407E31-4223-47F0-985F-C15883FB867F}.Debug|x64.Build.0 = Debug|x64
 		{6B407E31-4223-47F0-985F-C15883FB867F}.Debug|x86.ActiveCfg = Debug|Win32
@@ -121,6 +115,22 @@ Global
 		{64BCA3F8-E8BA-4E56-BC13-DB70DFA83283}.Release|x64.Build.0 = Release|x64
 		{64BCA3F8-E8BA-4E56-BC13-DB70DFA83283}.Release|x86.ActiveCfg = Release|Win32
 		{64BCA3F8-E8BA-4E56-BC13-DB70DFA83283}.Release|x86.Build.0 = Release|Win32
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x64.ActiveCfg = Debug|x64
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x64.Build.0 = Debug|x64
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x86.ActiveCfg = Debug|Win32
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Debug|x86.Build.0 = Debug|Win32
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x64.ActiveCfg = Release|x64
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x64.Build.0 = Release|x64
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x86.ActiveCfg = Release|Win32
+		{C6A993B1-B980-4BD5-9C10-267025C6ECB8}.Release|x86.Build.0 = Release|Win32
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Debug|x64.ActiveCfg = Debug|x64
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Debug|x64.Build.0 = Debug|x64
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Debug|x86.ActiveCfg = Debug|Win32
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Debug|x86.Build.0 = Debug|Win32
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Release|x64.ActiveCfg = Release|x64
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Release|x64.Build.0 = Release|x64
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Release|x86.ActiveCfg = Release|Win32
+		{89DC57DB-FEE7-4BF9-BDFD-CAF9283B0E6B}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

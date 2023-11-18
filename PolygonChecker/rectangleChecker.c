@@ -37,41 +37,98 @@ int* GetRectangleIndexes(int* rectangleIndexes)
 //reorder the points in the array accordingly
 void ClassifyPoints(int* rectangleIndexes)
 {
-	//even numbers signify X values in rectangle indexes
-	// odd numbers signify Y values in rectangle indexes
-	for (int x = 0; x < 8; x += 2)
+	int highest = rectangleIndexes[1];
+	int leftmost = rectangleIndexes[0];
+
+	//get first point classified
+	for (int i = 2; i < 8; i += 2)
 	{
-		//0 -1 0 1 1 0 -1 0
-		for (int y = 1; y < 8; y += 2)
+		//if 2 points are at the same highest point
+		if (rectangleIndexes[i + 1] == highest)
 		{
-			//check point 1: highest, leftmost
-			if (rectangleIndexes[1] <= rectangleIndexes[y] && rectangleIndexes[0] >= rectangleIndexes[y - 1])
+			if (rectangleIndexes[i] <= leftmost)
 			{
-				swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
+				swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[i], &rectangleIndexes[i + 1]);
+				highest = rectangleIndexes[1];
+				leftmost = rectangleIndexes[0];
 			}
-
-			//check point 2: rightmost, highest
-			if (rectangleIndexes[2] <= rectangleIndexes[x] && rectangleIndexes[3] >= rectangleIndexes[x + 1])
-			{
-				swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[x], &rectangleIndexes[x + 1]);
-			}
-
-			//check point 3: lowest, rightmost
-			if (rectangleIndexes[5] >= rectangleIndexes[y] && rectangleIndexes[4] <= rectangleIndexes[y - 1])
-			{
-				swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[y - 1], &rectangleIndexes[y]);
-			}
-
-			//check point 4: leftmost, lowest
-			if (rectangleIndexes[6] >= rectangleIndexes[x] && rectangleIndexes[7] >= rectangleIndexes[x + 1])
-			{
-				swap(&rectangleIndexes[6], &rectangleIndexes[7], &rectangleIndexes[x], &rectangleIndexes[x + 1]);
-			}
+		}
+		//otherwise test if the point is higher
+		else if (rectangleIndexes[i + 1] > highest)
+		{
+			swap(&rectangleIndexes[0], &rectangleIndexes[1], &rectangleIndexes[i], &rectangleIndexes[i + 1]);
+			highest = rectangleIndexes[1];
+			leftmost = rectangleIndexes[0];
 		}
 	}
 
-	if (rectangleIndexes[2] <= rectangleIndexes[4] && rectangleIndexes[5] >= rectangleIndexes[3])
-		swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[4], &rectangleIndexes[5]);
+	//second and fourth point classification
+	//distance from point
+	double dist1 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[2], rectangleIndexes[3]);
+	double dist2 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[4], rectangleIndexes[5]);
+	double dist3 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+
+	//get hypotenuse to calculate angles
+	double hyp1 = dist(rectangleIndexes[0] + dist1, rectangleIndexes[1], rectangleIndexes[2], rectangleIndexes[3]);
+	double hyp2 = dist(rectangleIndexes[0] + dist2, rectangleIndexes[1], rectangleIndexes[4], rectangleIndexes[5]);
+	double hyp3 = dist(rectangleIndexes[0] + dist3, rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+
+	//cosine law for angle calculations
+	double angle1 = acos(((dist1 * dist1) + (dist1 * dist1) - (hyp1 * hyp1)) / (2 * dist1 * dist1));
+	double angle2 = acos(((dist2 * dist2) + (dist2 * dist2) - (hyp2 * hyp2)) / (2 * dist2 * dist2));
+	double angle3 = acos(((dist3 * dist3) + (dist3 * dist3) - (hyp3 * hyp3)) / (2 * dist3 * dist3));
+
+	//convert to degrees
+	double dAngle1 = angle1 * 180.0 / PI;
+	double dAngle2 = angle2 * 180.0 / PI;
+	double dAngle3 = angle3 * 180.0 / PI;
+
+	if ((float)dAngle2 <= (float)dAngle1)
+		if (dAngle2 < dAngle1)
+			swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[4], &rectangleIndexes[5]);
+		else if (dist2 < dist1)
+			swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[4], &rectangleIndexes[5]);
+
+	dist1 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[2], rectangleIndexes[3]);
+	dist3 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+
+	hyp1 = dist(rectangleIndexes[0] + dist1, rectangleIndexes[1], rectangleIndexes[2], rectangleIndexes[3]);
+	hyp3 = dist(rectangleIndexes[0] + dist3, rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+
+	angle1 = acos(((dist1 * dist1) + (dist1 * dist1) - (hyp1 * hyp1)) / (2 * dist1 * dist1));
+	angle3 = acos(((dist3 * dist3) + (dist3 * dist3) - (hyp3 * hyp3)) / (2 * dist3 * dist3));
+
+	dAngle1 = angle1 * 180.0 / PI;
+	dAngle3 = angle3 * 180.0 / PI;
+
+	if ((float)dAngle3 <= (float)dAngle1)
+		if (dAngle3 < dAngle1)
+			swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[6], &rectangleIndexes[7]);
+		else if (dist3 < dist1)
+			swap(&rectangleIndexes[2], &rectangleIndexes[3], &rectangleIndexes[6], &rectangleIndexes[7]);
+
+	dist2 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[4], rectangleIndexes[5]);
+	dist3 = dist(rectangleIndexes[0], rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+	
+	hyp2 = dist(rectangleIndexes[0] + dist2, rectangleIndexes[1], rectangleIndexes[4], rectangleIndexes[5]);
+	hyp3 = dist(rectangleIndexes[0] + dist3, rectangleIndexes[1], rectangleIndexes[6], rectangleIndexes[7]);
+
+	angle2 = acos(((dist2 * dist2) + (dist2 * dist2) - (hyp2 * hyp2)) / (2 * dist2 * dist2));
+	angle3 = acos(((dist3 * dist3) + (dist3 * dist3) - (hyp3 * hyp3)) / (2 * dist3 * dist3));
+
+	dAngle2 = angle2 * 180.0 / PI;
+	dAngle3 = angle3 * 180.0 / PI;
+
+	if ((float)dAngle3 <= (float)dAngle2)
+		if (dAngle3 < dAngle2)
+			swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[6], &rectangleIndexes[7]);
+		else if (dist3 < dist2)
+			swap(&rectangleIndexes[4], &rectangleIndexes[5], &rectangleIndexes[6], &rectangleIndexes[7]);
+}
+
+double dist(double x1, double y1, double x2, double y2)
+{
+	return sqrt(pow(x2 - x1, 2) + pow(y2 - y1, 2));
 }
 
 void swap(int* x1, int* y1, int* x2, int* y2)

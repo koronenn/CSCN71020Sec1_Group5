@@ -371,7 +371,7 @@ namespace ClassifyPointsTestCases
 		TEST_METHOD(ClassifyPoints_Test27)
 		{
 			int points[] = { 3,-16, 0,2, -4,-1, -5,17 };
-			int pointsInOrder[] = { -5, 17, 3,-16, 0,2, -4,-1 };
+			int pointsInOrder[] = { -5, 17, 0,2, 3,-16, -4,-1 };
 
 			ClassifyPoints(points);
 

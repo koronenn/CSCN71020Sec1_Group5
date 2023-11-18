@@ -18,7 +18,7 @@ extern "C"
 #define RIGHT		"Right triangle with angles:"
 #define SCALENE		"Scalene triangle with angles:"
 #define ISOSCELES	"Isosceles triangle with angles:"
-#define EQUILATERAL "Equilateral triangle with angles:"
+#define EQUILATERAL	"Equilateral triangle with angles:"
 
 namespace analyzeTriangleTest
 {
