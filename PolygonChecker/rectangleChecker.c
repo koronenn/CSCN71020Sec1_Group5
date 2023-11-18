@@ -91,7 +91,7 @@ bool CalculateAnglesForPolygon(int* rectangleVertexes, double* rectangleSides)
 	bool isRectangle = true;
 	for (int i = 0; i < 8; i += 2)
 	{
-		double adjacent = rectangleVertexes[(i + 2) % 8] - rectangleVertexes[i];	//adjacent is x values
+		double adjacent = rectangleVertexes[(i + 2) % 8] - rectangleVertexes[  i  ];	//adjacent is x values
 		double opposite = rectangleVertexes[(i + 3) % 8] - rectangleVertexes[i + 1];	//opposite is y values
 
 		//calculate side length using hypotenuse calculation
