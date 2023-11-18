@@ -188,9 +188,12 @@ double GetPerimeter(double* sides)
 	//loop through sides and add them to the perimeter
 	double perimeter = 0;
 	for (int i = 0; i < 4; i++)
-	{
 		perimeter += sides[i];
-	}
+
+	//edge case of line calculation
+	if (sides[0] + sides[1] + sides[2] == sides[3])
+		perimeter /= 2;
+
 	return perimeter;
 }
 
