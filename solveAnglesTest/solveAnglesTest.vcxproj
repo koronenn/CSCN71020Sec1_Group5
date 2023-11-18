@@ -20,7 +20,7 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
-    <ProjectGuid>{0CBE93BF-ECE5-4DCC-8E63-D3524579C7DB}</ProjectGuid>
+    <ProjectGuid>{91605021-4235-4168-AF4E-0DFA00607AA2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>solveAnglesTest</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
