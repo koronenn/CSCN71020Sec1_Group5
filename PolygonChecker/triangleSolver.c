@@ -86,15 +86,13 @@ bool isTriangle(double angleA, double angleB, double angleC)
 	}
 
 	// calulate the sum of the three angles
-	double sumOfAngles = angleA + angleB + angleC;
+	int sumOfAngles = angleA + angleB + angleC;
 
 	// return true if sum of angles is 180 which indicates the shape is a triangle, other wise the shape is not and return false
-	if(sumOfAngles != 180)
+	if (sumOfAngles != 180)
 	{
 		return false;
 	}
 	else
-	{
 		return true;
-	}
 }
