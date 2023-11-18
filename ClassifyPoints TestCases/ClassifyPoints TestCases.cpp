@@ -187,7 +187,7 @@ namespace ClassifyPointsTestCases
 			}
 		}
 
-		// Next three tests use points that create a long vertical triangle rectangle
+		// Next three tests use points that create a long vertical rectangle
 		TEST_METHOD(ClassifyPoints_Test12)
 		{
 			int points[] = { 0,-4, 0,0, 1,0, 1,-4 };
@@ -222,7 +222,7 @@ namespace ClassifyPointsTestCases
 			}
 		}
 
-		// Next four tests use points that create a long horizontal triangle rectangle
+		// Next four tests use points that create a long horizontal rectangle
 		TEST_METHOD(ClassifyPoints_Test15)
 		{
 			int points[] = { 0,1, 6,1, 6,0, 0,0 };

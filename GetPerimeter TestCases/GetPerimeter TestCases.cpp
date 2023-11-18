@@ -82,5 +82,14 @@ namespace GetPerimeterTestCases
 			Assert::AreEqual((float)actual, (float)0.2);
 
 		}
+
+		TEST_METHOD(GetPerimeter_Test9)
+		{
+			double sides[SQUARE_SIDES] = { 1,1,1,3};
+			double actual = GetPerimeter(sides);
+
+			Assert::AreEqual((float)actual, (float)3);
+
+		}
 	};
 }
