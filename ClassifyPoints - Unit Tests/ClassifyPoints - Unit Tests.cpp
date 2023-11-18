@@ -50,6 +50,8 @@ namespace ClassifyPointsUnitTests
 		* 4312 *
 		* 4321 *
 		 ******/
+
+		// this function has no boundaries or exceptions to test, only functional tests
 		
 		// basic square
 		TEST_METHOD(ClassifyPoints_Test1)
@@ -339,6 +341,8 @@ namespace ClassifyPointsUnitTests
 
 		// These are not rectangles, but should still be ordered starting from the top most point
 		// top left if there are two
+
+		// Random, boomerang like shape
 		TEST_METHOD(ClassifyPoints_Test25)
 		{
 			int points[] = { 0,-2, 2,-7, -1,2, 3,14};
@@ -350,5 +354,71 @@ namespace ClassifyPointsUnitTests
 				Assert::AreEqual(points[i], pointsInOrder[i]);
 			}
 		}
+
+		// Parallelogram
+		TEST_METHOD(ClassifyPoints_Test26)
+		{
+			int points[] = { 4,4, 1,1, 3,1, 2,4};
+			int pointsInOrder[] = { 2,4, 4,4, 3,1, 1,1};
+
+			ClassifyPoints(points);
+
+			for (int i = 0; i < AMOUNT_OF_POINTS; i++) {
+				Assert::AreEqual(points[i], pointsInOrder[i]);
+			}
+		}
+		
+		// Another shape with random plotted points  
+		TEST_METHOD(ClassifyPoints_Test27)
+		{
+			int points[] = { 3,-16, 0,2, -4,-1, -5,17};
+			int pointsInOrder[] = { -5, 17, 3,-16, 0,2, -4,-1};
+
+			ClassifyPoints(points);
+
+			for (int i = 0; i < AMOUNT_OF_POINTS; i++) {
+				Assert::AreEqual(points[i], pointsInOrder[i]);
+			}
+		}
+
+		// this is a line
+		TEST_METHOD(ClassifyPoints_Test28)
+		{
+			int points[] = { 4,1, 7,1, 2,1, 5,1};
+			int pointsInOrder[] = { 2,1, 4,1, 5,1, 7,1};
+
+			ClassifyPoints(points);
+
+			for (int i = 0; i < AMOUNT_OF_POINTS; i++) {
+				Assert::AreEqual(points[i], pointsInOrder[i]);
+			}
+		}
+
+		// this is a trapezoid
+		TEST_METHOD(ClassifyPoints_Test29)
+		{
+			int points[] = { 6,2, 2,2, 3,4, 5,4};
+			int pointsInOrder[] = {3,4, 5,4, 6,2, 2,2};
+
+			ClassifyPoints(points);
+
+			for (int i = 0; i < AMOUNT_OF_POINTS; i++) {
+				Assert::AreEqual(points[i], pointsInOrder[i]);
+			}
+		}
+
+		// sideways triangle
+		TEST_METHOD(ClassifyPoints_Test30)
+		{
+			int points[] = { 2,2, -3,-3, -2,0, -1,-1};
+			int pointsInOrder[] = { 2,2, -1,-1, -3,-3, -2,0};
+
+			ClassifyPoints(points);
+
+			for (int i = 0; i < AMOUNT_OF_POINTS; i++) {
+				Assert::AreEqual(points[i], pointsInOrder[i]);
+			}
+		}
+
 	};
 }

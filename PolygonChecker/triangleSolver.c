@@ -80,13 +80,13 @@ bool isTriangle(double angleA, double angleB, double angleC)
 {
 
 	// return false if any angle is 0, (triangle has 1 or more side lengths that are too long to form a triangle)
-	if (angleA == 0 || angleB == 0 || angleC == 0)
+	if (angleA <= 0 || angleB <= 0 || angleC <= 0)
 	{
 		return false;
 	}
 
-	// calulate te sum of the three angles
-	int sumOfAngles = angleA + angleB + angleC;
+	// calulate the sum of the three angles
+	double sumOfAngles = angleA + angleB + angleC;
 
 	// return true if sum of angles is 180 which indicates the shape is a triangle, other wise the shape is not and return false
 	if(sumOfAngles != 180)

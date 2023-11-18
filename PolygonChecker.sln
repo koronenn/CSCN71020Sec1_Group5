@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ClassifyPoints - Unit Tests
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GetPerimeter - Unit Tests", "GetPerimeter - Unit Tests\GetPerimeter - Unit Tests.vcxproj", "{89ED5C77-64CE-4C5F-89A6-2D4441CCD27F}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "isTriangle - Unit Tests", "isTriangle - Unit Tests\isTriangle - Unit Tests.vcxproj", "{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pythagTheorem - Unit Tests", "pythagTheorem - Unit Tests\pythagTheorem - Unit Tests.vcxproj", "{588312A8-1763-417D-8B93-F5342E61F6C0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -41,6 +45,22 @@ Global
 		{89ED5C77-64CE-4C5F-89A6-2D4441CCD27F}.Release|x64.Build.0 = Release|x64
 		{89ED5C77-64CE-4C5F-89A6-2D4441CCD27F}.Release|x86.ActiveCfg = Release|Win32
 		{89ED5C77-64CE-4C5F-89A6-2D4441CCD27F}.Release|x86.Build.0 = Release|Win32
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Debug|x64.ActiveCfg = Debug|x64
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Debug|x64.Build.0 = Debug|x64
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Debug|x86.ActiveCfg = Debug|Win32
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Debug|x86.Build.0 = Debug|Win32
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Release|x64.ActiveCfg = Release|x64
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Release|x64.Build.0 = Release|x64
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Release|x86.ActiveCfg = Release|Win32
+		{9AFE8E3A-82D1-49B6-B1B5-485136031DFD}.Release|x86.Build.0 = Release|Win32
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Debug|x64.ActiveCfg = Debug|x64
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Debug|x64.Build.0 = Debug|x64
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Debug|x86.ActiveCfg = Debug|Win32
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Debug|x86.Build.0 = Debug|Win32
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Release|x64.ActiveCfg = Release|x64
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Release|x64.Build.0 = Release|x64
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Release|x86.ActiveCfg = Release|Win32
+		{588312A8-1763-417D-8B93-F5342E61F6C0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -11,6 +11,8 @@ extern "C"
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace GetPerimeterUnitTests
+
+	// this funcntion has no boundaries or excpetions to test, only functional tests
 {
 	TEST_CLASS(GetPerimeterUnitTests)
 	{
